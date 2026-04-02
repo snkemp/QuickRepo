@@ -1,4 +1,4 @@
-#Requires -Version 7.0
+#Requires -Version 5.1
 
 # ── dot-source private helpers ────────────────────────────────────────────────
 Get-ChildItem -Path "$PSScriptRoot\Private\*.ps1" | ForEach-Object { . $_.FullName }
@@ -25,11 +25,12 @@ Register-ArgumentCompleter -CommandName 'Invoke-Repo' -ParameterName 'Subcommand
         Where-Object { $_ -like "$wordToComplete*" } |
         Sort-Object |
         ForEach-Object {
+            $tooltip = if ($store.ContainsKey($_)) { "$_ -> $($store[$_])" } else { $_ }
             [System.Management.Automation.CompletionResult]::new(
                 $_,
                 $_,
                 'ParameterValue',
-                ($store.ContainsKey($_) ? "$_ → $($store[$_])" : $_)
+                $tooltip
             )
         }
 }

@@ -63,7 +63,7 @@ Describe 'Save-RepoStore' {
         Save-RepoStore -Store $store
 
         Test-Path $env:QUICKREPO_STORE | Should -BeTrue
-        $loaded = Get-Content $env:QUICKREPO_STORE -Raw | ConvertFrom-Json -AsHashtable
+        $loaded = @{}; (Get-Content $env:QUICKREPO_STORE -Raw | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $loaded[$_.Name] = $_.Value }
         $loaded['alpha'] | Should -Be 'C:\alpha'
     }
 
@@ -74,7 +74,7 @@ Describe 'Save-RepoStore' {
         $updated = @{ new = 'C:\new' }
         Save-RepoStore -Store $updated
 
-        $loaded = Get-Content $env:QUICKREPO_STORE -Raw | ConvertFrom-Json -AsHashtable
+        $loaded = @{}; (Get-Content $env:QUICKREPO_STORE -Raw | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $loaded[$_.Name] = $_.Value }
         $loaded.ContainsKey('old') | Should -BeFalse
         $loaded['new'] | Should -Be 'C:\new'
     }

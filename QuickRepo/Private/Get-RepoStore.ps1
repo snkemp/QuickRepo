@@ -17,8 +17,12 @@ function Get-RepoStore {
 
 	try {
 		$json = Get-Content -Path $storePath -Raw -Encoding UTF8
-		$obj = $json | ConvertFrom-Json -AsHashtable
-		return $obj
+		$obj  = $json | ConvertFrom-Json
+		$hashtable = @{}
+		foreach ($property in $obj.PSObject.Properties) {
+			$hashtable[$property.Name] = $property.Value
+		}
+		return $hashtable
 	}
 	catch {
 		Write-Warning "QuickRepo: failed to read store at '$storePath': $_"

@@ -33,7 +33,7 @@
     Description       = 'Save and navigate to folder paths using short aliases. Includes tab-completion and a unified `repo` entry point.'
 
     # Minimum version of the PowerShell engine required by this module
-    PowerShellVersion = '7.0'
+    PowerShellVersion = '5.1'
 
     # Name of the PowerShell host required by this module
     # PowerShellHostName = ''
