@@ -30,6 +30,7 @@ function Remove-Repository {
     if ($PSCmdlet.ShouldProcess($Name, "Remove repository alias (was '$($store[$Name])')")) {
         $store.Remove($Name)
         Save-RepoStore -Store $store
-        Write-Host "Removed: $Name"
+        Write-Host "Removed: " -ForegroundColor Red -NoNewline
+        Write-Host $Name -ForegroundColor Cyan
     }
 }

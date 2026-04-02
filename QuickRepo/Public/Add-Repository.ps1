@@ -45,9 +45,12 @@ function Add-Repository {
         throw "Alias '$Name' already exists (points to '$($store[$Name])'). Use -Force to overwrite."
     }
 
-    if ($PSCmdlet.ShouldProcess($Name, "Save repository alias → '$cleanPath'")) {
+    if ($PSCmdlet.ShouldProcess($Name, "Save repository alias -> '$cleanPath'")) {
         $store[$Name] = $cleanPath
         Save-RepoStore -Store $store
-        Write-Host "Saved: $Name → $cleanPath"
+        Write-Host "Saved: " -ForegroundColor Green -NoNewline
+        Write-Host $Name -ForegroundColor Cyan -NoNewline
+        Write-Host " -> " -ForegroundColor DarkGray -NoNewline
+        Write-Host $cleanPath -ForegroundColor Yellow
     }
 }

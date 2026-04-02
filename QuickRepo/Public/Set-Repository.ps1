@@ -43,6 +43,12 @@ function Set-Repository {
     if ($PSCmdlet.ShouldProcess($Name, "Move repository alias from '$oldPath' to '$cleanPath'")) {
         $store[$Name] = $cleanPath
         Save-RepoStore -Store $store
-        Write-Host "Moved: $Name → $cleanPath (was: $oldPath)"
+        Write-Host "Moved: " -ForegroundColor Green -NoNewline
+        Write-Host $Name -ForegroundColor Cyan -NoNewline
+        Write-Host " -> " -ForegroundColor DarkGray -NoNewline
+        Write-Host $cleanPath -ForegroundColor Yellow -NoNewline
+        Write-Host " (was: " -ForegroundColor DarkGray -NoNewline
+        Write-Host $oldPath -ForegroundColor DarkYellow -NoNewline
+        Write-Host ")" -ForegroundColor DarkGray
     }
 }

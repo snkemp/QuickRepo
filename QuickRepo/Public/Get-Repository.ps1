@@ -23,7 +23,9 @@ function Get-Repository {
     $store = Get-RepoStore
 
     if ($store.Count -eq 0) {
-        Write-Host 'No repositories saved. Use `repo save <alias>` to add one.'
+        Write-Host 'No repositories saved. Use ' -ForegroundColor Yellow -NoNewline
+        Write-Host 'repo save <alias>' -ForegroundColor Cyan -NoNewline
+        Write-Host ' to add one.' -ForegroundColor Yellow
         return
     }
 

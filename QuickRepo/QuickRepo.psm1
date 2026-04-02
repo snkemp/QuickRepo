@@ -1,15 +1,15 @@
 #Requires -Version 5.1
 
-# ── dot-source private helpers ────────────────────────────────────────────────
+# -- dot-source private helpers ----------------------------------------------────
 Get-ChildItem -Path "$PSScriptRoot\Private\*.ps1" | ForEach-Object { . $_.FullName }
 
-# ── dot-source public functions ───────────────────────────────────────────────
+# -- dot-source public functions ---------------------------------------------────
 Get-ChildItem -Path "$PSScriptRoot\Public\*.ps1"  | ForEach-Object { . $_.FullName }
 
 # ── alias ─────────────────────────────────────────────────────────────────────
 Set-Alias -Name repo -Value Invoke-Repo -Scope Global
 
-# ── tab completions ───────────────────────────────────────────────────────────
+# -- tab completions ---------------------------------------------------------
 $subcommands = @('list', 'save', 'rm', 'rename', 'move')
 
 # Completer for Invoke-Repo (covers the `repo` alias too)

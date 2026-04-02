@@ -40,6 +40,12 @@ function Rename-Repository {
         $store.Remove($Name)
         $store[$NewName] = $path
         Save-RepoStore -Store $store
-        Write-Host "Renamed: $Name → $NewName (path: $path)"
+        Write-Host "Renamed: " -ForegroundColor Green -NoNewline
+        Write-Host $Name -ForegroundColor Cyan -NoNewline
+        Write-Host " -> " -ForegroundColor DarkGray -NoNewline
+        Write-Host $NewName -ForegroundColor Cyan -NoNewline
+        Write-Host " (path: " -ForegroundColor DarkGray -NoNewline
+        Write-Host $path -ForegroundColor Yellow -NoNewline
+        Write-Host ")" -ForegroundColor DarkGray
     }
 }

@@ -3,7 +3,7 @@ function Save-RepoStore {
     .SYNOPSIS
         Persists the repository alias hashtable to disk atomically.
     .PARAMETER Store
-        The hashtable of alias → path entries to save.
+        The hashtable of alias -> path entries to save.
     #>
 	[CmdletBinding()]
 	param(

@@ -3,7 +3,7 @@ function Get-RepoStore {
     .SYNOPSIS
         Loads the repository alias store from disk.
     .OUTPUTS
-        [hashtable] alias → path
+        [hashtable] alias -> path
     #>
 	[CmdletBinding()]
 	[OutputType([hashtable])]
